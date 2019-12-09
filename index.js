@@ -34,6 +34,7 @@ app.post('/things/:serial_id/data', function(req, res) {
     try {
         let access_token = req.header('Authorization').split(' ')[1];
         console.log('access token : ' + access_token);
+        console.log(req.body);
         insert_data(req.params.serial_id, req.body.temperature, req.body.voltage, req.body.current, req.body.timestamp);
         res.json({id: 'a'});
     } catch (err) {
