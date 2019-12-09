@@ -27,7 +27,7 @@ async function insert_data(serial_id, temperature, voltage, current, timestamp) 
         };
 
 
-        client.query(query, (err, res) => {
+        client.query('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);', [serial_id, temperature, voltage, current, new Date(timestamp)], (err, res) => {
             if (err) throw err;
             client.end();
         });
