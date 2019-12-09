@@ -8,6 +8,7 @@ const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
 });
+client.connect();
 
 var app = express();
 app.use(express.urlencoded({extended: true}));
@@ -17,7 +18,7 @@ const SECRET = 'IWAYAAKIHIRO';
 
 async function insert_data(serial_id, temperature, voltage, current, timestamp) {
 
-    client.connect();
+
     client.query('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);',
         [serial_id, temperature, voltage, current, new Date(timestamp)], (err, res) => {
             if (err) {
