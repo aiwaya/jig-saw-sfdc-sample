@@ -13,7 +13,9 @@ const SECRET = 'IWAYAAKIHIRO';
 
 async function insert_data(serial_id, temperature, voltage, current, timestamp) {
     try {
+        console.log(serial_id + temperature+voltage+current+timestamp);
         await database.one('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);',
+
             [serial_id, temperature, voltage, current, new Date(timestamp)])
             .then(data => {
                 return data.id;
