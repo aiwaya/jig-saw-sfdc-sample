@@ -16,7 +16,7 @@ app.use(express.json());
 
 const SECRET = 'IWAYAAKIHIRO';
 
-async function insert_data(serial_id, temperature, voltage, current, timestamp) {
+function insert_data(serial_id, temperature, voltage, current, timestamp) {
 
 
     client.query('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);',
