@@ -36,7 +36,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         res.json({id: 'a'});
     } catch (err) {
     }
-}
+})
 
 
 
