@@ -23,12 +23,13 @@ const SECRET = 'IWAYAAKIHIRO';
 app.post('/things/:serial_id/data', function(req, res) {
     let access_token = req.header('Authorization').split(' ')[1];
     console.log('access token : ' + access_token);
+    let serial_id, temperature, voltage, current, timestamp;
     try {
-        let serial_id = req.params.serial_id;
-        let temperature = req.body.temperature;
-        let voltage = req.body.voltage;
-        let current = req.body.current;
-        let timestamp = req.body.timestamp;
+        serial_id = req.params.serial_id;
+        temperature = req.body.temperature;
+        voltage = req.body.voltage;
+        current = req.body.current;
+        timestamp = req.body.timestamp;
     } catch (err) {
         res.status(500).send({id: 'udasdad'});
     }
