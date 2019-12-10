@@ -40,7 +40,7 @@ app.post('/things/:serial_id/data', function(req, res) {
     }
 
     client.query('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);',
-        [serial_id, temperature, voltage, current, new Date(timestamp)], (err, result) => {
+        [serial_id, temperature, voltage, current, new Date()], (err, result) => {
             if (err) {
                 console.error(err);
                 res.status(500).send({error: err});
