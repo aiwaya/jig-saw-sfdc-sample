@@ -24,6 +24,7 @@ app.post('/things/:serial_id/data', function(req, res) {
     let access_token = req.header('Authorization').split(' ')[1];
     if(access_token != 'abcd') {
         res.status(500).send({error: 'invalid access token'});
+        return;
     }
 
     let serial_id, temperature, voltage, current, timestamp;
@@ -35,6 +36,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         timestamp = req.body.timestamp;
     } catch (err) {
         res.status(500).send({error: err});
+        return;
     }
 
     client.query('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);',
