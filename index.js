@@ -37,7 +37,8 @@ app.post('/things/:serial_id/data', function(req, res) {
         [serial_id, temperature, voltage, current, new Date(timestamp)], (err, result) => {
             if (err) {
                 console.err(err);
-                res.status(500).send({id: 'a'});
+                res.status(500);
+                res.send('assa');
 
             } else {
                 res.status(201).send();

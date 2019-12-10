@@ -10,8 +10,8 @@ function create_data(access_token, body) {
         },
         body: body
     });
-    console.log(res);
-    //console.log(res.getBody('utf8'));
+    //console.log(res);
+    console.log(res.getBody('utf8'));
 
 };
 
