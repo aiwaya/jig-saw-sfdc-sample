@@ -23,7 +23,7 @@ const SECRET = 'IWAYAAKIHIRO';
 app.post('/things/:serial_id/data', function(req, res) {
     let access_token = req.header('Authorization').split(' ')[1];
     if(access_token != 'abcd') {
-        res.status(200).send({error: 'invalid access token'});
+        res.status(401).send({error: 'invalid access token'});
         console.error('invalid access token');
         return;
     }
@@ -37,7 +37,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         timestamp = req.body.timestamp;
     } catch (err) {
         console.error(err);
-        res.status(200).send({error: err});
+        res.status(400).send({error: err});
         return;
     }
 
@@ -45,7 +45,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         [serial_id, temperature, voltage, current, new Date(timestamp)], (err, result) => {
             if (err) {
                 console.error(err);
-                res.status(200).send({error: err});
+                res.status(400).send({error: err});
             } else {
                 res.status(201).send();
             }
