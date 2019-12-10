@@ -21,19 +21,26 @@ const SECRET = 'IWAYAAKIHIRO';
 
 
 app.post('/things/:serial_id/data', function(req, res) {
+    console.log('a');
     let access_token = req.header('Authorization').split(' ')[1];
+    console.log('b');
     if(access_token != 'abcd') {
         res.status(401).send({error: 'invalid access token'});
         console.error('invalid access token');
         return;
     }
+    console.log('c');
 
     var serial_id, temperature, voltage, current, timestamp;
     try {
         serial_id = req.params.serial_id;
+        console.log('1');
         temperature = req.body.temperature;
+        console.log('2');
         voltage = req.body.voltage;
+        console.log('3');
         current = req.body.current;
+        console.log('4');
         timestamp = req.body.timestamp;
     } catch (err) {
         console.error(err);

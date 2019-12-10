@@ -24,7 +24,7 @@ function create_data(access_token, body) {
 };
 
 let access_token = 'abcd';
-let body = '{"timestamp":"2019-12-23T18:25:43.511Zs","temperature":"12.12","voltage":"10.1","current":20.1}';
+let body = '{"timestamp":"2019-12-23T18:25:43.511Z","temperature":"12.12","voltage":2a,"current":20.1}';
 try {
     create_data(access_token, body);
 } catch(err) {
