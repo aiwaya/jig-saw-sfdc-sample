@@ -11,10 +11,10 @@ function create_data(access_token, body) {
         body: body
     });
     console.log(res);
-    console.log(res.getBody('utf8'));
+    //console.log(res.getBody('utf8'));
 
 };
 
 let access_token = 'aaa';
-let body = '{"timestamp":"2019-12-23T18:25:43.511aaZ","temperature":"12.12","voltage":10.1,"current":20.1}';
+let body = '{"timestamp":"2019-12-23T18:25:43.511Z","temperature":"12.12","voltage":"10.1","current":20.1}';
 create_data(access_token, body);
