@@ -24,6 +24,7 @@ app.post('/things/:serial_id/data', function(req, res) {
     let access_token = req.header('Authorization').split(' ')[1];
     if(access_token != 'abcd') {
         res.status(500).send({error: 'invalid access token'});
+        console.error('invalid access token');
         return;
     }
 
@@ -35,6 +36,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         current = req.body.current;
         timestamp = req.body.timestamp;
     } catch (err) {
+        console.error(err);
         res.status(500).send({error: err});
         return;
     }
