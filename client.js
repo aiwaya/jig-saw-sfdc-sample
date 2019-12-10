@@ -10,11 +10,11 @@ function create_data(access_token, body) {
         },
         body: body
     });
-    //console.log(res);
+    console.log(res.statusCode);
     console.log(res.getBody('utf8'));
 
 };
 
 let access_token = 'aaa';
-let body = '{"timestamp":"2019-12-23T18:25:43.511Zaa","temperature":"12.12","voltage":"10.1","current":20.1}';
+let body = '{"timestamp":"2019-12-23T18:25:43.511Za","temperature":"12.12","voltage":"10.1","current":20.1}';
 create_data(access_token, body);
