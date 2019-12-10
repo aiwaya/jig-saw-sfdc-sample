@@ -37,7 +37,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         timestamp = req.body.timestamp;
     } catch (err) {
         console.error(err);
-        res.status(400).send({error: err});
+        res.status(400).send({error: 'invalid params'});
         return;
     }
 
@@ -45,7 +45,7 @@ app.post('/things/:serial_id/data', function(req, res) {
         [serial_id, temperature, voltage, current, new Date(timestamp)], (err, result) => {
             if (err) {
                 console.error(err);
-                res.status(400).send({error: err});
+                res.status(400).send({error: 'db error'});
             } else {
                 res.status(201).send();
             }
