@@ -19,14 +19,14 @@ const SECRET = 'IWAYAAKIHIRO';
 
 
 
-function insert_data(res, serial_id, temperature, voltage, current, timestamp) {
+function insert_data(res1, serial_id, temperature, voltage, current, timestamp) {
     client.query('INSERT INTO data(serial_id, temperature, voltage, current, timestamp) VALUES($1,$2,$3,$4,$5);',
         [serial_id, temperature, voltage, current, new Date(timestamp)], (err, res) => {
             if (err) {
-                res.status(500).send();
+                res1.status(500).send();
 
             } else {
-                res.status(201).send();
+                res1.status(201).send();
             }
         });
 }
