@@ -22,12 +22,12 @@ function create_data(body) {
 var v1 = 1;
 var v2 = "2019-12-23T18:25:43.511Z";
 var v3 = '標準';
-var v4 = '12';
-var v5 = '12';
-var v6 = '12';
-var v7 = '12';
-var v8 = '12';
-var v9 = '12';
+var v4 = '9';
+var v5 = '121';
+var v6 = '121';
+var v7 = '121';
+var v8 = '121';
+var v9 = '121';
 
 var body =
     {
