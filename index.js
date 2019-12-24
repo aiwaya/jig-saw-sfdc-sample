@@ -76,6 +76,7 @@ app.post('/things/:serial_no/data', function(req, res) {
             console.log('Updated Successfully : ' + ret.id);
         });
         */
+        console.log('..');
 
         var v1 = 1;
         var v2 = "2019-12-23T18:25:43.511Z";
@@ -99,7 +100,10 @@ app.post('/things/:serial_no/data', function(req, res) {
             v8__c : v8,
             v9__c : v9
         }, 'serial_no__c', function(err, ret) {
-            if (err || !ret.success) { return console.error(err, ret); }
+            if (err || !ret.success) {
+                console.log('ERRRRRRRRRR');
+                return console.error(err, ret);
+            }
             console.log('Updated Successfully : ' + ret.id);
         });
 
