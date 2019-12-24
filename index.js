@@ -47,6 +47,7 @@ app.post('/things/:serial_no/data', function(req, res) {
          v8:基盤品番
          v9:ソフトVer.
          */
+        /*
         let serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9;
         serial_no = req.params.serial_no;
         v1 = req.body.v1;
@@ -61,6 +62,33 @@ app.post('/things/:serial_no/data', function(req, res) {
 
         conn.sobject("Equipment__c").upsert({
             serial_no__c : serial_no,
+            v1__c : v1,
+            v2__c : v2,
+            v3__c : v3,
+            v4__c : v4,
+            v5__c : v5,
+            v6__c : v6 ,
+            v7__c : v7,
+            v8__c : v8,
+            v9__c : v9
+        }, 'serial_no__c', function(err, ret) {
+            if (err || !ret.success) { return console.error(err, ret); }
+            console.log('Updated Successfully : ' + ret.id);
+        });
+        */
+
+        var v1 = 1;
+        var v2 = "2019-12-23T18:25:43.511Z";
+        var v3 = '標準';
+        var v4 = '12';
+        var v5 = '12';
+        var v6 = '12';
+        var v7 = '12';
+        var v8 = '12';
+        var v9 = '12';
+
+        conn.sobject("Equipment__c").upsert({
+            serial_no__c : 'VR-10001',
             v1__c : v1,
             v2__c : v2,
             v3__c : v3,
