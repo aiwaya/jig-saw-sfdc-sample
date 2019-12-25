@@ -113,7 +113,7 @@ app.post('/things/:serial_no/data', function (req, res) {
 
     } catch (err) {
         console.error(err);
-        return res.status(400).send({error: err});
+        return res.status(500).send({error: err});
     }
 
 
@@ -191,15 +191,16 @@ app.post('/things/:serial_no/alert', function (req, res) {
                 a14__c: a14
             }, function (err, ret) {
                 if (err || !ret.success) {
-                    return console.error(err, ret);
+                    console.error(err, ret);
+                    return res.status(500).send({error: err});
                 }
-                console.log('Updated Successfully : ' + ret.id);
+                return res.status(201).send();
             });
         });
 
     } catch (err) {
         console.error(err);
-        res.status(400).send({error: err});
+        res.status(500).send({error: err});
         return;
     }
 

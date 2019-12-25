@@ -13,6 +13,7 @@ function create_data(body) {
         });
         if(res.statusCode != '201') {
             console.log('error');
+            console.log(res.body.toString());
         }
         console.log(res.statusCode);
     } catch (err) {
@@ -34,6 +35,7 @@ function create_alert(body) {
         });
         if(res.statusCode != '201') {
             console.log('error');
+            console.log(res.body.toString());
         }
         console.log(res.statusCode);
     } catch (err) {
@@ -64,7 +66,7 @@ var body =
         v9 : v9
     };
 
-create_data(JSON.stringify(body));
+//create_data(JSON.stringify(body));
 
 
 var a1 = '4';
