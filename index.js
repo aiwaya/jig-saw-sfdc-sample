@@ -103,6 +103,7 @@ app.post('/things/:serial_no/data', function(req, res) {
             }, 'serial_no__c', function(err, ret) {
                 if (err || !ret.success) { return console.error(err, ret); }
                 console.log('Updated Successfully : ' + ret.id);
+                return res.status(201).send();
             });
         });
 
