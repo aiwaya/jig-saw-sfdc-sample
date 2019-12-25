@@ -83,7 +83,7 @@ app.post('/things/:serial_no/data', function(req, res) {
             var v2 = "2019-12-23T18:25:43.511Z";
             var v3 = '標準';
             var v4 = '12000';
-            var v5 = '12';
+            var v5 = '120099999';
             var v6 = '12';
             var v7 = '12';
             var v8 = '12';
