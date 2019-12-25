@@ -43,7 +43,7 @@ app.post('/things/:serial_no/data', function (req, res) {
          v9:ソフトVer.
          */
 
-        let serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9;
+        var serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9;
         serial_no = req.params.serial_no;
         v1 = req.body.v1;
         v2 = req.body.v2;
