@@ -1,8 +1,7 @@
-
 var express = require('express');
 var bodyParser = require('body-parser');
 
-const { Client } = require('pg');
+const {Client} = require('pg');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -22,18 +21,14 @@ var conn = new jsforce.Connection({});
 const username = "20190924@demo.com";
 const password = "abcd1234";
 
-app.post('/things/:serial_no/data', function(req, res) {
+app.post('/things/:serial_no/data', function (req, res) {
     let access_token = req.header('Authorization').split(' ')[1];
-    if(access_token != KEY) {
+    if (access_token != KEY) {
         res.status(401).send({error: 'invalid access token'});
         console.error('invalid access token');
         return;
     }
 
-    /*
-     ユーザ名：20190924@demo.com
-     パスワード：abcd1234
-     */
 
     try {
         /*
@@ -47,7 +42,7 @@ app.post('/things/:serial_no/data', function(req, res) {
          v8:基盤品番
          v9:ソフトVer.
          */
-        /*
+
         let serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9;
         serial_no = req.params.serial_no;
         v1 = req.body.v1;
@@ -60,65 +55,52 @@ app.post('/things/:serial_no/data', function(req, res) {
         v8 = req.body.v8;
         v9 = req.body.v9;
 
-        conn.sobject("Equipment__c").upsert({
-            serial_no__c : serial_no,
-            v1__c : v1,
-            v2__c : v2,
-            v3__c : v3,
-            v4__c : v4,
-            v5__c : v5,
-            v6__c : v6 ,
-            v7__c : v7,
-            v8__c : v8,
-            v9__c : v9
-        }, 'serial_no__c', function(err, ret) {
-            if (err || !ret.success) { return console.error(err, ret); }
-            console.log('Updated Successfully : ' + ret.id);
-        });
-        */
-        conn.login(username, password, function(err, userInfo) {
-            if (err) { return console.error(err); }
-
-            var v1 = 1;
-            var v2 = "2019-12-23T18:25:43.511Z";
-            var v3 = '標準';
-            var v4 = '12000';
-            var v5 = '120099999';
-            var v6 = '12';
-            var v7 = '12';
-            var v8 = '12';
-            var v9 = '12';
+        conn.login(username, password, function (err, userInfo) {
+            if (err) {
+                return console.error(err);
+            }
 
             conn.sobject("Equipment__c").upsert({
-                serial_no__c : 'VR-10001',
-                v1__c : v1,
-                v2__c : v2,
-                v3__c : v3,
-                v4__c : v4,
-                v5__c : v5,
-                v6__c : v6 ,
-                v7__c : v7,
-                v8__c : v8,
-                v9__c : v9
-            }, 'serial_no__c', function(err, ret) {
-                if (err || !ret.success) { return console.error(err, ret); }
-                console.log('Updated Successfully : ' + ret.id);
-                return res.status(201).send();
+                serial_no__c: serial_no,
+                v1__c: v1,
+                v2__c: v2,
+                v3__c: v3,
+                v4__c: v4,
+                v5__c: v5,
+                v6__c: v6,
+                v7__c: v7,
+                v8__c: v8,
+                v9__c: v9
+            }, 'serial_no__c', function (err, ret) {
+                if (err || !ret.success) {
+                    return console.error(err, ret);
+                }
+
+                client.query('INSERT INTO data(serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
+                    [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9], (err, result) => {
+                        if (err) {
+                            console.error(err);
+                            return res.status(400).send({error: err});
+                        } else {
+                            return res.status(201).send();
+                        }
+                    });
             });
+
         });
 
 
-/*
-        client.query('INSERT INTO data(serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
-            [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9], (err, result) => {
-                if (err) {
-                    console.error(err);
-                    res.status(400).send({error: err});
-                } else {
-                    res.status(201).send();
-                }
-            });
-            */
+        /*
+         client.query('INSERT INTO data(serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
+         [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9], (err, result) => {
+         if (err) {
+         console.error(err);
+         res.status(400).send({error: err});
+         } else {
+         res.status(201).send();
+         }
+         });
+         */
     } catch (err) {
         console.error(err);
         res.status(400).send({error: err});
@@ -129,9 +111,9 @@ app.post('/things/:serial_no/data', function(req, res) {
 })
 
 
-app.post('/things/:serial_no/alert', function(req, res) {
+app.post('/things/:serial_no/alert', function (req, res) {
     let access_token = req.header('Authorization').split(' ')[1];
-    if(access_token != KEY) {
+    if (access_token != KEY) {
         res.status(401).send({error: 'invalid access token'});
         console.error('invalid access token');
         return;
@@ -172,27 +154,31 @@ app.post('/things/:serial_no/alert', function(req, res) {
         a13 = req.body.a13;
         a14 = req.body.a14;
 
-        conn.login(username, password, function(err, userInfo) {
-            if (err) { return console.error(err); }
+        conn.login(username, password, function (err, userInfo) {
+            if (err) {
+                return console.error(err);
+            }
 
             conn.sobject("CustomObject2__c").insert({
-                Field1__r : {serial_no__c:'VR-10001'},
-                a1__c : a1,
-                a2__c : a2,
-                a3__c : a3,
-                a4__c : a4,
-                a5__c : a5,
-                a6__c : a6 ,
-                a7__c : a7,
-                a8__c : a8,
-                a9__c : a9,
-                a10__c : a10,
-                a11__c : a11,
-                a12__c : a12,
-                a13__c : a13,
-                a14__c : a14
-            }, function(err, ret) {
-                if (err || !ret.success) { return console.error(err, ret); }
+                Field1__r: {serial_no__c: 'VR-10001'},
+                a1__c: a1,
+                a2__c: a2,
+                a3__c: a3,
+                a4__c: a4,
+                a5__c: a5,
+                a6__c: a6,
+                a7__c: a7,
+                a8__c: a8,
+                a9__c: a9,
+                a10__c: a10,
+                a11__c: a11,
+                a12__c: a12,
+                a13__c: a13,
+                a14__c: a14
+            }, function (err, ret) {
+                if (err || !ret.success) {
+                    return console.error(err, ret);
+                }
                 console.log('Updated Successfully : ' + ret.id);
             });
         });
