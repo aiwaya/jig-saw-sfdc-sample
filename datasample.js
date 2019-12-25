@@ -29,7 +29,7 @@ conn.login(username, password, function(err, userInfo) {
     var v1 = 1;
     var v2 = "2019-12-23T18:25:43.511Z";
     var v3 = '標準';
-    var v4 = '12';
+    var v4 = '12000';
     var v5 = '12';
     var v6 = '12';
     var v7 = '12';
