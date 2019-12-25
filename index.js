@@ -88,19 +88,6 @@ app.post('/things/:serial_no/data', function (req, res) {
             });
 
         });
-
-
-        /*
-         client.query('INSERT INTO data(serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
-         [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9], (err, result) => {
-         if (err) {
-         console.error(err);
-         res.status(400).send({error: err});
-         } else {
-         res.status(201).send();
-         }
-         });
-         */
     } catch (err) {
         console.error(err);
         res.status(400).send({error: err});
