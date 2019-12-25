@@ -1,5 +1,6 @@
 
 function create_data(body) {
+    console.log(body);
     var res;
     try {
         let request = require('sync-request');
@@ -42,64 +43,64 @@ function create_alert(body) {
 
 var v1 = 1;
 var v2 = "2019-12-23T18:25:43.511Z";
-var v3 = '標準';
-var v4 = '9';
-var v5 = '121';
-var v6 = '121';
-var v7 = '121';
-var v8 = '121';
-var v9 = '121';
+var v3 = '標準11';
+var v4 = '11';
+var v5 = '11';
+var v6 = '11';
+var v7 = '11';
+var v8 = '11';
+var v9 = '11';
 
 var body =
     {
-        v1__c : v1,
-        v2__c : v2,
-        v3__c : v3,
-        v4__c : v4,
-        v5__c : v5,
-        v6__c : v6 ,
-        v7__c : v7,
-        v8__c : v8,
-        v9__c : v9
+        v1 : v1,
+        v2 : v2,
+        v3 : v3,
+        v4 : v4,
+        v5 : v5,
+        v6 : v6 ,
+        v7 : v7,
+        v8 : v8,
+        v9 : v9
     };
 
 create_data(JSON.stringify(body));
 
 
-var a1 = '1';
-var a2 = 2;
-var a3 = 2;
-var a4 = 2;
-var a5 = 2;
-var a6 = 1;
-var a7 = 1;
-var a8 = 1;
-var a9 = 1;
-var a10 = 1;
-var a11 = 1;
-var a12 = 1;
-var a13 = 1;
-var a14 = 1;
+var a1 = '4';
+var a2 = 4;
+var a3 = 4;
+var a4 = 4;
+var a5 = 4;
+var a6 = 4;
+var a7 = 4;
+var a8 = 4;
+var a9 = 4;
+var a10 = 4;
+var a11 = 4;
+var a12 = 4;
+var a13 = 4;
+var a14 = 4;
 
 var b =
     {
-        a1__c : a1,
-        a2__c : a2,
-        a3__c : a3,
-        a4__c : a4,
-        a5__c : a5,
-        a6__c : a6 ,
-        a7__c : a7,
-        a8__c : a8,
-        a9__c : a9,
-        a10__c : a10,
-        a11__c : a11,
-        a12__c : a12,
-        a13__c : a13,
-        a14__c : a14
+        a1 : a1,
+        a2 : a2,
+        a3 : a3,
+        a4 : a4,
+        a5 : a5,
+        a6 : a6 ,
+        a7 : a7,
+        a8 : a8,
+        a9 : a9,
+        a10 : a10,
+        a11 : a11,
+        a12 : a12,
+        a13 : a13,
+        a14 : a14
 };
 
-//create_alert(JSON.stringify(b));
+create_alert(JSON.stringify(b));
 
 
 
