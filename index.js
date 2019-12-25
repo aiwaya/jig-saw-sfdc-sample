@@ -54,44 +54,49 @@ app.post('/things/:serial_no/data', function (req, res) {
         v7 = req.body.v7;
         v8 = req.body.v8;
         v9 = req.body.v9;
+        let params = [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9];
+
+        console.log('data : ' + params);
 
         client.query('INSERT INTO data(serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
-            [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9], (err, result) => {
+            params, (err, result) => {
                 if (err) {
                     console.error(err);
                     //return res.status(400).send({error: err});
+                } else {
+                    conn.login(username, password, function (err, userInfo) {
+                        if (err) {
+                            return console.error(err);
+                        }
+
+                        conn.sobject("Equipment__c").upsert({
+                            serial_no__c: serial_no,
+                            v1__c: v1,
+                            v2__c: v2,
+                            v3__c: v3,
+                            v4__c: v4,
+                            v5__c: v5,
+                            v6__c: v6,
+                            v7__c: v7,
+                            v8__c: v8,
+                            v9__c: v9
+                        }, 'serial_no__c', function (err, ret) {
+                            if (err || !ret.success) {
+                                console.error(err, ret);
+                                return res.status(500).send({error: err});
+                            }
+                            return res.staus(201).send();
+
+                        });
+
+                    });
                 }
             });
 
-        conn.login(username, password, function (err, userInfo) {
-            if (err) {
-                return console.error(err);
-            }
 
-            conn.sobject("Equipment__c").upsert({
-                serial_no__c: serial_no,
-                v1__c: v1,
-                v2__c: v2,
-                v3__c: v3,
-                v4__c: v4,
-                v5__c: v5,
-                v6__c: v6,
-                v7__c: v7,
-                v8__c: v8,
-                v9__c: v9
-            }, 'serial_no__c', function (err, ret) {
-                if (err || !ret.success) {
-                    return console.error(err, ret);
-                }
-
-
-            });
-
-        });
     } catch (err) {
         console.error(err);
-        res.status(400).send({error: err});
-        return;
+        return res.status(400).send({error: err});
     }
 
 
