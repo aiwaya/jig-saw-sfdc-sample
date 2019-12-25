@@ -54,7 +54,7 @@ app.post('/things/:serial_no/data', function (req, res) {
         v7 = req.body.v7;
         v8 = req.body.v8;
         v9 = req.body.v9;
-        let params = [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9];
+        var params = [serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9];
 
         console.log('data : ' + params);
 
@@ -85,7 +85,7 @@ app.post('/things/:serial_no/data', function (req, res) {
                                 console.error(err, ret);
                                 return res.status(500).send({error: err});
                             }
-                            return res.staus(201).send();
+                            return res.status(201).send();
 
                         });
 
@@ -129,7 +129,7 @@ app.post('/things/:serial_no/alert', function (req, res) {
          a13:切断ヒータのステップ数
          a14:接着ヒータのステップ数
          */
-        let serial_no, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14;
+        var serial_no, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14;
         serial_no = req.params.serial_no;
         a1 = req.body.a1;
         a2 = req.body.a2;
