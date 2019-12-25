@@ -43,7 +43,7 @@ function create_alert(body) {
 
 var v1 = 1;
 var v2 = "2019-12-23T18:25:43.511Z";
-var v3 = '標準11';
+var v3 = '標準';
 var v4 = '11';
 var v5 = '11';
 var v6 = '11';

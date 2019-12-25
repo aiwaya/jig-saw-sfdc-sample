@@ -21,30 +21,13 @@ var conn = new jsforce.Connection({});
 const username = "20190924@demo.com";
 const password = "abcd1234";
 
-function auth(req) {
-    try {
-        let access_token = req.header('Authorization').split(' ')[1];
-        if (access_token != KEY) return false;
-        return true;
-    } catch (err) {
-        console.error(err);
-        return false;
-    }
-}
-
 app.post('/things/:serial_no/data', function (req, res) {
-    if(!auth(req)) {
-        return res.status(401).send({error: 'invalid access token'});
-    }
-
-    /*
     let access_token = req.header('Authorization').split(' ')[1];
     if (access_token != KEY) {
         res.status(401).send({error: 'invalid access token'});
         console.error('invalid access token');
         return;
     }
-    */
 
 
     try {
@@ -121,17 +104,12 @@ app.post('/things/:serial_no/data', function (req, res) {
 
 
 app.post('/things/:serial_no/alert', function (req, res) {
-    if(!auth(req)) {
-        return res.status(401).send({error: 'invalid access token'});
-    }
-    /*
     let access_token = req.header('Authorization').split(' ')[1];
     if (access_token != KEY) {
         res.status(401).send({error: 'invalid access token'});
         console.error('invalid access token');
         return;
     }
-    */
 
 
     try {
