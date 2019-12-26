@@ -43,19 +43,11 @@ function create_alert(body) {
     }
 };
 
-var v1 = 1;
-var v2 = "2019-12-25T18:25:43.511Z";
-var v3 = '3';
-var v4 = '4';
-var v5 = '5';
-var v6 = '6';
-var v7 = '7';
-var v8 = '8';
-var v9 = '9';
+
 
 var body =
     {
-        v1 : 1,
+        v1 : 2,
         v2 : "2019-12-25T18:25:43.511Z",
         v3 : '3',
         v4 : '4',
@@ -66,7 +58,7 @@ var body =
         v9 : '9'
     };
 
-create_data(JSON.stringify(body));
+//create_data(JSON.stringify(body));
 
 
 var b =
@@ -79,9 +71,9 @@ var b =
         a6 : 6 ,
         a7 : 7,
         a8 : 8,
-        a9 : 1, // check
-        a10 : 0, // check
-        a11 : 1, // check
+        a9 : 1,
+        a10 : 0,
+        a11 : 1,
         a12 : "2019-12-25T18:25:43.511Z",
         a13 : 13,
         a14 : 14,

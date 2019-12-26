@@ -13,7 +13,7 @@ var app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-const KEY = process.env.KEY;
+const KEY = 'jy4BRHPgIn4t4cWOV4c';
 
 var jsforce = require('jsforce');
 var conn = new jsforce.Connection({});
@@ -38,18 +38,6 @@ app.post('/things/:serial_no/data', function (req, res) {
     }
 
     try {
-        /*
-         v1:総カウント
-         v2:送信時の日時
-         v3:包装設定（標準、密封）
-         v4:接着力右（１、２、３、４、５）
-         v5:接着力左（１、２、３、４、５）
-         v6:切断力（１、２、３、４、５）
-         v7:処理速度（１、２、３）
-         v8:基盤品番
-         v9:ソフトVer.
-         */
-
         var serial_no, v1, v2, v3, v4, v5, v6, v7, v8, v9;
         serial_no = req.params.serial_no;
         v1 = req.body.v1;
@@ -115,25 +103,8 @@ app.post('/things/:serial_no/alert', function (req, res) {
         return res.status(401).send({error: 'invalid access token'});
     }
 
-
-
     try {
-        /*
-         a1:エラーコード
-         a2:発生した時の外気温度（℃）
-         a3:切断ヒータの温度（℃）
-         a4:接着右ヒータの温度（℃）
-         a5:接着左ヒータの温度（℃）
-         a6:切断ヒータへの出力値（％）
-         a7:接着右ヒータへの出力値（％）
-         a8:接着左ヒータへの出力値（％）
-         a9:センサー1の状態(0, 1)
-         a10:センサー2の状態(0, 1)
-         a11:センサー3の状態(0, 1)
-         a12:搬送モータの速度(rpm)
-         a13:切断ヒータのステップ数
-         a14:接着ヒータのステップ数
-         */
+
         var serial_no, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24;
         serial_no = req.params.serial_no;
         a1 = req.body.a1;
