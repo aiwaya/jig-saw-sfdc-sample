@@ -3,5 +3,12 @@
   "description": "A barebones Node.js app using Express 4",
   "repository": "https://github.com/aiwaya/jig-saw-sfdc-sample",
   "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
-  "keywords": ["node"]
+  "keywords": ["node"],
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "adminium:petproject",
+    "trevor:trial",
+    "papertrail:choklad"
+
+  ]
 }
