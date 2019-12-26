@@ -44,14 +44,14 @@ function create_alert(body) {
 };
 
 var v1 = 1;
-var v2 = "2019-12-23T18:25:43.511Z";
-var v3 = '標準';
-var v4 = '11';
-var v5 = '11';
-var v6 = '11';
-var v7 = '11';
-var v8 = '11';
-var v9 = '11';
+var v2 = "2019-12-25T18:25:43.511Z";
+var v3 = '3';
+var v4 = '4';
+var v5 = '5';
+var v6 = '6';
+var v7 = '7';
+var v8 = '8';
+var v9 = '9';
 
 var body =
     {
@@ -66,23 +66,23 @@ var body =
         v9 : v9
     };
 
-//create_data(JSON.stringify(body));
+create_data(JSON.stringify(body));
 
 
-var a1 = '4';
-var a2 = 4;
-var a3 = 4;
+var a1 = '1';
+var a2 = 2;
+var a3 = 3;
 var a4 = 4;
-var a5 = 4;
-var a6 = 4;
-var a7 = 4;
-var a8 = 4;
-var a9 = 4;
-var a10 = 4;
-var a11 = 4;
-var a12 = 4;
-var a13 = 4;
-var a14 = 4;
+var a5 = 5;
+var a6 = 6;
+var a7 = 7;
+var a8 = 8;
+var a9 = 9;
+var a10 = 10;
+var a11 = 11;
+var a12 = 12;
+var a13 = 13;
+var a14 = 14;
 
 var b =
     {
