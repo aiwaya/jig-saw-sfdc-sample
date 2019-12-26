@@ -9,6 +9,8 @@
     "adminium:petproject",
     "trevor:trial",
     "papertrail:choklad"
-
-  ]
+  ],
+  "scripts": {
+    "postdeploy": "node scripts/create_table.js"
+  }
 }
